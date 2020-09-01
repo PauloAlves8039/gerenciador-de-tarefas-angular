@@ -1,3 +1,10 @@
+/**
+ * @file: cadastrar-tarefa.component.ts
+ * @author: Paulo Alves
+ * @description: responsável pelo cadastro das tarefas.
+ * @version 1.0.1 (29/08/2020)
+ */
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -22,6 +29,9 @@ export class CadastrarTarefaComponent implements OnInit {
     this.tarefa = new Tarefa();
   }
 
+  /**
+   * Cadastra a tarefa.
+   */
   cadastrar(): void {
     if (this.formTarefa.form.valid) {
       this.tarefaService.cadastrar(this.tarefa);

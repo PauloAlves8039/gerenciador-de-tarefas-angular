@@ -1,3 +1,10 @@
+/**
+ * @file: editar-tarefa.component.ts
+ * @author: Paulo Alves
+ * @description: responsável pela edição das tarefas.
+ * @version 1.0.1 (29/08/2020)
+ */
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -24,6 +31,9 @@ export class EditarTarefaComponent implements OnInit {
     this.tarefa = this.tarefaService.buscaPorId(id);
   }
 
+  /**
+   * Atualiza a tarefa.
+   */
   atualizar(): void {
     if (this.formTarefa.form.valid) {
       this.tarefaService.atualizar(this.tarefa);

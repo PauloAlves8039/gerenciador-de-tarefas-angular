@@ -1,3 +1,10 @@
+/**
+ * @file: listar-tarefa.component.ts
+ * @author: Paulo Alves
+ * @description: responsável pela listagem e outras funcionalidades referentes as tarefas.
+ * @version 1.0.1 (27/08/2020)
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { TarefaService, Tarefa } from './../shared';
 
@@ -16,10 +23,16 @@ export class ListarTarefaComponent implements OnInit {
     this.tarefas = this.listarTodos();
   }
 
+  /**
+   * Lista todas as tarefas.
+   */
   listarTodos(): Tarefa[] {
     return this.tarefaService.listarTodos();
   }
 
+  /**
+   * Remove uma tarefa.
+   */
   remover($event: any, tarefa: Tarefa): void {
     $event.preventDefault();
     if (confirm('Deseja remover a tarefa "' + tarefa.nome + '"?')) {
@@ -28,6 +41,9 @@ export class ListarTarefaComponent implements OnInit {
     }
   }
 
+  /**
+   * Altera o estado da tarefa.
+   */
   alterarStatus(tarefa: Tarefa): void {
     if (confirm('Deseja alterar o status da tarefa "' + tarefa.nome + '"?')) {
       this.tarefaService.alterarStatus(tarefa.id);

@@ -14,11 +14,17 @@ import { Tarefa } from './';
 export class TarefaService {
   constructor() {}
 
+  /**
+   * Realiza a listagem das tarefas.
+   */
   listarTodos(): Tarefa[] {
     const tarefas = localStorage['tarefas'];
     return tarefas ? JSON.parse(tarefas) : [];
   }
 
+  /**
+   * Responsável pelo cadastro das tarefas.
+   */
   cadastrar(tarefa: Tarefa): void {
     const tarefas = this.listarTodos();
     tarefa.id = new Date().getTime();
@@ -26,11 +32,17 @@ export class TarefaService {
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 
+  /**
+   * Pesquisa a tarefa por id.
+   */
   buscaPorId(id: number): Tarefa {
     const tarefas: Tarefa[] = this.listarTodos();
     return tarefas.find(tarefa => tarefa.id === id);
   }
 
+  /**
+   * Responsável pela atualização da tarefa.
+   */
   atualizar(tarefa: Tarefa): void {
     const tarefas: Tarefa[] = this.listarTodos();
     tarefas.forEach((obj, index, objs) => {
@@ -41,12 +53,18 @@ export class TarefaService {
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 
+  /**
+   * Executa a remoção da tarefa por id.
+   */
   remover(id: number): void {
     let tarefas: Tarefa[] = this.listarTodos();
     tarefas = tarefas.filter(tarefa => tarefa.id !== id);
     localStorage['tarefas'] = JSON.stringify(tarefas);
   }
 
+  /**
+   * Realiza a mudança do estado da tarefa selecionada por id.
+   */
   alterarStatus(id: number): void {
     const tarefas: Tarefa[] = this.listarTodos();
     tarefas.forEach((obj, index, objs) => {
